@@ -4,32 +4,42 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.example.domain.Order;
-import org.example.repository.ReadFromDataBase;
+import org.example.repository.ReadFromDataBaseImpl;
 
 public class OrderServiceImpl implements OrderService {
 
-  private final ReadFromDataBase readFromDataBase = new ReadFromDataBase();
+    private final ReadFromDataBaseImpl readFromDataBase = new ReadFromDataBaseImpl();
 
-  public void save(Order order) {
-    readFromDataBase.save(order);
-  }
+    public void save(Order order) {
 
-  public void delete(int id) {
-    readFromDataBase.delete(id);
-  }
+        readFromDataBase.save(order);
+    }
 
-  public void addItemFromMenu(int id) {
-    String sql = "SELECT id, title, price FROM shop.menu WHERE id=" + id;
-    readFromDataBase.save(readFromDataBase.getFromMenuOrder(sql));
-  }
+    public void delete(int id, String tableName) {
+        String sql = "DELETE FROM shop." + tableName + " WHERE id = " + id;
+        readFromDataBase.delete(sql);
+    }
 
-  public List<Order> getAll() {
-    ReadFromDataBase readFromDataBase = new ReadFromDataBase();
-    return new ArrayList<>(readFromDataBase.getAll("SELECT * FROM shop.order"));
-  }
+    public void addItemFromMenu(int id) {
+        readFromDataBase.save(readFromDataBase.getFromMenuOrder(id));
+    }
 
-  public List<Order> getMenu() {
-    ReadFromDataBase readFromDataBase = new ReadFromDataBase();
-    return new ArrayList<>(readFromDataBase.getAll("SELECT * FROM shop.menu"));
-  }
+    public List<Order> getAll() {
+        ReadFromDataBaseImpl readFromDataBase = new ReadFromDataBaseImpl();
+        return new ArrayList<>(readFromDataBase.getAll("SELECT * FROM shop.order"));
+    }
+
+    public List<Order> getMenu() {
+        ReadFromDataBaseImpl readFromDataBase = new ReadFromDataBaseImpl();
+        return new ArrayList<>(readFromDataBase.getAll("SELECT * FROM shop.menu"));
+    }
+
+    public void readyOrder(Order order) {
+        readFromDataBase.saveReady(order);
+    }
+
+    public List<Order> getReady() {
+        ReadFromDataBaseImpl readFromDataBase = new ReadFromDataBaseImpl();
+        return new ArrayList<>(readFromDataBase.getAll("SELECT * FROM shop.ready"));
+    }
 }

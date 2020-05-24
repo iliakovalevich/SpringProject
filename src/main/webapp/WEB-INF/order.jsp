@@ -26,9 +26,8 @@
     </style>
 </head>
 
-<body bgcolor="#f0e68c">
-
-<h2 style="text-align: center"><a href="<c:url value="/add-new-order"/>">Add new order</a></h2>
+<body style="background-color:#f0e68c">
+<h2 style="text-align: center">Orders</h2>
 <table align="center" bgcolor="aqua">
     <tr>
         <th>Title</th>
@@ -41,9 +40,28 @@
             <td>${order.title}</td>
             <td>${order.price}</td>
             <td>${order.id}</td>
-            <td><a href="/delete/${order.id}">Delete this item</a></td>
+            <td><a href="/ready/${order.id}/${order.title}/${order.price}">Order is ready</a></td>
         </tr>
     </c:forEach>
 </table>
+<br>
+<h2 style="text-align: center">Ready orders</h2>
+<br>
+<table align="center" bgcolor="aqua">
+    <tr>
+        <th>Title</th>
+        <th>Order number</th>
+        <th>Order completed</th>
+    </tr>
+    <c:forEach var="ready" items="${readyOrder}">
+        <tr>
+            <td>${ready.title}</td>
+            <td>${ready.id}</td>
+            <td><a href="/delete/${ready.id}">Order is completed</a></td>
+        </tr>
+    </c:forEach>
+</table>
+<br>
+<div style="text-align: center"><a href="<c:url value="/add-new-order"/>"><button type="submit"><h3>Add new order</h3></button></a></div><br>
 </body>
 </html>

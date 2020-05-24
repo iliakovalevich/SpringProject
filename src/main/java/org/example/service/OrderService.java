@@ -6,9 +6,18 @@ import org.example.domain.Order;
 
 public interface OrderService {
 
-  void save(Order order);
+    void save(Order order);
 
-  void delete(int id);
+    void delete(int id, String tableName);
 
-  List<Order> getAll();
+    void readyOrder(Order order);
+
+    void addItemFromMenu(int id);
+
+    List<Order> getAll();
+
+    List<Order> getReady();
+
+    List<Order> getMenu();
+
 }
