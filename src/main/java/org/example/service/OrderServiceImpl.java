@@ -3,7 +3,7 @@ package org.example.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.example.domain.Order;
+import org.example.entity.Order;
 import org.example.dao.ReadFromDataBaseImpl;
 
 public class OrderServiceImpl implements OrderService {
@@ -24,22 +24,13 @@ public class OrderServiceImpl implements OrderService {
         readFromDataBase.save(readFromDataBase.getFromMenuOrder(id));
     }
 
-    public List<Order> getAll() {
+    public List<Order> getAll(String tableName) {
         ReadFromDataBaseImpl readFromDataBase = new ReadFromDataBaseImpl();
-        return new ArrayList<>(readFromDataBase.getAll("SELECT * FROM shop.order"));
-    }
-
-    public List<Order> getMenu() {
-        ReadFromDataBaseImpl readFromDataBase = new ReadFromDataBaseImpl();
-        return new ArrayList<>(readFromDataBase.getAll("SELECT * FROM shop.menu"));
+        return new ArrayList<>(readFromDataBase.getAll("SELECT * FROM shop." + tableName));
     }
 
     public void readyOrder(Order order) {
         readFromDataBase.saveReady(order);
     }
 
-    public List<Order> getReady() {
-        ReadFromDataBaseImpl readFromDataBase = new ReadFromDataBaseImpl();
-        return new ArrayList<>(readFromDataBase.getAll("SELECT * FROM shop.ready"));
-    }
 }

@@ -1,6 +1,6 @@
 package org.example.dao;
 
-import org.example.domain.Order;
+import org.example.entity.Order;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -54,9 +54,6 @@ public class ReadFromDataBaseImpl implements ReadFromDataBase {
                 preparedStatement.setInt(1, id);
                 ResultSet resultSet = preparedStatement.executeQuery();
                 if (resultSet.next()) {
-//                    int Id = resultSet.getInt(1);
-//                    String title = resultSet.getString(2);
-//                    double price = resultSet.getDouble(3);
                     order.setId(resultSet.getInt(1));
                     order.setTitle(resultSet.getString(2));
                     order.setPrice(resultSet.getDouble(3));

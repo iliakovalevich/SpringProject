@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import org.example.domain.Order;
+import org.example.entity.Order;
 import org.example.service.OrderServiceImpl;
 
 @Controller
@@ -19,8 +19,8 @@ public class OrderController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getOrderPage(Model model) {
-        List<Order> orders = orderService.getAll();
-        List<Order> ready = orderService.getReady();
+        List<Order> orders = orderService.getAll("order");
+        List<Order> ready = orderService.getAll("ready");
         model.addAttribute("orderList", orders);
         model.addAttribute("readyOrder", ready);
         return "order";
@@ -28,7 +28,7 @@ public class OrderController {
 
     @RequestMapping(value = "/add-new-order", method = RequestMethod.GET)
     public String addNewOrderPage(Model model) {
-        List<Order> menu = orderService.getMenu();
+        List<Order> menu = orderService.getAll("menu");
         model.addAttribute("menuList", menu);
         return "addNewOrder";
     }

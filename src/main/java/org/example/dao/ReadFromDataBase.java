@@ -1,6 +1,6 @@
 package org.example.dao;
 
-import org.example.domain.Order;
+import org.example.entity.Order;
 
 import java.sql.Connection;
 import java.util.List;

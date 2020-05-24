@@ -2,7 +2,7 @@ package org.example.service;
 
 import java.util.List;
 
-import org.example.domain.Order;
+import org.example.entity.Order;
 
 public interface OrderService {
 
@@ -14,10 +14,6 @@ public interface OrderService {
 
     void addItemFromMenu(int id);
 
-    List<Order> getAll();
-
-    List<Order> getReady();
-
-    List<Order> getMenu();
+    List<Order> getAll(String tableName);
 
 }
