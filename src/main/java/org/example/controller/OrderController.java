@@ -20,9 +20,9 @@ public class OrderController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getOrderPage(Model model) {
         List<Order> orders = orderService.getAll();
-        List<Order> readyes = orderService.getReady();
+        List<Order> ready = orderService.getReady();
         model.addAttribute("orderList", orders);
-        model.addAttribute("readyOrder", readyes);
+        model.addAttribute("readyOrder", ready);
         return "order";
     }
 

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.example.domain.Order;
-import org.example.repository.ReadFromDataBaseImpl;
+import org.example.dao.ReadFromDataBaseImpl;
 
 public class OrderServiceImpl implements OrderService {
 

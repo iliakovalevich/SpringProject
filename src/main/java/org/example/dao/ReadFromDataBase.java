@@ -1,4 +1,4 @@
-package org.example.repository;
+package org.example.dao;
 
 import org.example.domain.Order;
 
