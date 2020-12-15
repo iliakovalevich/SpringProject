@@ -25,22 +25,24 @@ public class OrderController {
     private final MenuServicesImpl menuServices = new MenuServicesImpl();
     private final ReadyOrdersServicesImpl readyOrdersServices = new ReadyOrdersServicesImpl();
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String getOrderPage(Model model) {
-//        List<Order> orders = orderService.getAll("order");
-//        List<Order> ready = orderService.getAll("ready");
-        List<Order> orders = orderServices.getAllOrders();
-        List<Order> readyOrder = readyOrdersServices.getAllReadyOrders();
-        model.addAttribute("orderList", orders);
-        model.addAttribute("readyOrder", readyOrder);
-        return "order";
-    }
+//    @RequestMapping(value = "/", method = RequestMethod.GET)
+//    public String getOrderPage(Model model) {
+////        List<Order> orders = orderService.getAll("order");
+////        List<Order> ready = orderService.getAll("ready");
+//        List<Order> orders = orderServices.getAllOrders();
+//        List<Order> readyOrder = readyOrdersServices.getAllReadyOrders();
+//        model.addAttribute("orderList", orders);
+//        model.addAttribute("readyOrder", readyOrder);
+//        return "order";
+//    }
 
     @RequestMapping(value = "/add-new-order", method = RequestMethod.GET)
     public String addNewOrderPage(Model model) {
 //        List<Order> menu = orderService.getAll("menu");
         List<Product> menuList = menuServices.getAllProductsFromMenu();
+        List<Order> orderList = orderServices.getAllOrders();
         model.addAttribute("menuList", menuList);
+        model.addAttribute("orderList",orderList);
         return "addNewOrder";
     }
 
@@ -57,7 +59,7 @@ public class OrderController {
 
     @RequestMapping(value = "addMenu/{idProduct}",method = RequestMethod.GET)
     public String addItemFromMenu(@PathVariable int idProduct) {
-        orderServices.addOrderFromMenu(idProduct);
+        orderServices.addOrderFromMenu(idProduct,"eexexe");
 //        orderService.addItemFromMenu(id);
         return "redirect:/";
     }

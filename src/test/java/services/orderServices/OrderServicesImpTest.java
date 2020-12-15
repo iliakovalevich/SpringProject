@@ -8,10 +8,11 @@ import org.junit.Test;
 public class OrderServicesImpTest {
     OrderServicesImpl orderServices = new OrderServicesImpl();
 
-//    @Test
-//    public void addOrderFromMenuTest() {
-//        orderServices.addOrderFromMenu(1);
-//        Assert.assertEquals("fanta",orderServices.getOrderById(3).getTitleOrder());
-//    }
+    @Test
+    public void addOrderFromMenuTest() {
+        orderServices.addOrderFromMenu(2,"client");
+    }
+
+
 
 }

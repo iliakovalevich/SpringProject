@@ -1,35 +1,10 @@
 package org.example.entity.persons;
 
 public class Client {
-    String login;
-    String password;
-    String name;
+    String clientName;
+    String clientPassword;
+    int idOrder;
     String address;
-    String phoneNumber;
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getAddress() {
         return address;
@@ -39,22 +14,52 @@ public class Client {
         this.address = address;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getClientName() {
+        return clientName;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
+    }
+
+    public String getClientPassword() {
+        return clientPassword;
+    }
+
+    public void setClientPassword(String clientPassword) {
+        this.clientPassword = clientPassword;
+    }
+
+    public int getIdOrder() {
+        return idOrder;
+    }
+
+    public void setIdOrder(int idOrder) {
+        this.idOrder = idOrder;
+    }
+
+    public Client() {
+    }
+
+    public Client(String clientName, String clientPassword) {
+        this.clientName = clientName;
+        this.clientPassword = clientPassword;
+    }
+
+    public Client(String clientName, String clientPassword, int idOrder,String address) {
+        this.clientName = clientName;
+        this.clientPassword = clientPassword;
+        this.idOrder = idOrder;
+        this.address= address;
     }
 
     @Override
     public String toString() {
         return "Client{" +
-                "login='" + getLogin() + '\'' +
-                ", password='" + getPassword() + '\'' +
-                ", name='" + getName() + '\'' +
+                "clientName='" + getClientName() + '\'' +
+                ", clientPassword='" + getClientPassword() + '\'' +
+                ", idOrder=" + getIdOrder() +
                 ", address='" + getAddress() + '\'' +
-                ", phoneNumber='" + getPhoneNumber() + '\'' +
                 '}';
     }
 }

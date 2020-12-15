@@ -1,4 +1,4 @@
-package org.example.entity;
+package org.example.entity.persons;
 
 public class Admin {
     String username;

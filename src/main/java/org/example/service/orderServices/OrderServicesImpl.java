@@ -1,8 +1,10 @@
 package org.example.service.orderServices;
 
+import org.example.dao.workWithClients.ClientDaoImpl;
 import org.example.dao.workWithOrders.OrderDaoImpl;
 import org.example.entity.Order;
 import org.example.entity.Product;
+import org.example.service.clientServices.ClientServicesImpl;
 import org.example.service.menuServices.MenuServicesImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -13,6 +15,7 @@ public class OrderServicesImpl implements OrderServices {
     ApplicationContext context =
             new ClassPathXmlApplicationContext("jdbctemplate-config.xml");
     OrderDaoImpl orderDao = (OrderDaoImpl) context.getBean("jdbcTemplateOrderDao");
+    ClientDaoImpl clientDao= (ClientDaoImpl) context.getBean("jdbcTemplateClientDao");
     private MenuServicesImpl menuServices;
 
     public OrderServicesImpl(){
@@ -39,13 +42,14 @@ public class OrderServicesImpl implements OrderServices {
         return orderDao.getOrderById(id);
     }
 
-    public void addOrderFromMenu(int id) {
+    public void addOrderFromMenu(int id,String username) {
         Order order = new Order();
         Product product = new Product();
         product=menuServices.getProductFromMenuById(id);
         order.setTitleOrder(product.getTitleProduct());
         order.setPriceOrder(product.getPriceProduct());
         orderDao.saveOrder(order);
+        clientDao.addOrder(id,username);
     }
 
 

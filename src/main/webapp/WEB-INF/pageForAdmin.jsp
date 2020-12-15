@@ -1,7 +1,6 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -33,41 +32,61 @@
     </style>
 </head>
 <body bgcolor="#f0f8ff">
-
-
-<form action="<c:url value="/add-new-order"/>" method="POST">
+<div style="text-align: center"><a href="<c:url value="/"/>">
+    <h3>Go home</h3>
+</a></div>
+<form action="/pageForAdmin" METHOD="GET">
     <h2 style="text-align: center">Menu</h2>
     <table align="center" bgcolor="aqua">
         <tr>
             <th>Title</th>
             <th>Price</th>
-            <th>Add Order</th>
+            <th>Id product</th>
+            <th>Action</th>
         </tr>
         <c:forEach var="menuList" items="${menuList}">
             <tr>
                 <td>${menuList.titleProduct}</td>
                 <td>${menuList.priceProduct}</td>
-                <td><a href="addMenu/${menuList.idProduct}">Add this item in orders</a></td>
+                <td>${menuList.idProduct}</td>
+                <td><a href="deleteProduct/${menuList.idProduct}" METHOD="GET">Delete product</a></td>
             </tr>
         </c:forEach>
     </table>
 </form>
 <br>
-<h2 style="color: crimson ; text-align: center">!You can make a special order that is not on the menu!</h2>
+<br>
+<h3 style="text-align: center">Update product in menu</h3>
 <div style="text-align: center">
-    <form class="modal" action="<c:url value="/add-new-order"/>" method="POST">
+    <form class="modal" action="<c:url value="/updateProduct"/>" method="POST">
+        <label>id</label>
+        <input type="text" name="idProduct">
+        <br><br>
         <label>Title</label>
         <input type="text" name="title">
+        <br><br>
         <label>Price</label>
         <input type="text" name="price">
+        <br><br>
         <input type="submit" value="Add new order">
+    </form>
+</div>
+<br>
+<br>
+<h3 style="text-align: center">Add product in menu</h3>
+<div style="text-align: center">
+    <form class="modal" action="<c:url value="/addNewProduct"/>" method="POST">
+        <label>Title</label>
+        <input type="text" name="title">
+        <br><br>
+        <label>Price</label>
+        <input type="text" name="price">
+        <br><br>
+        <input type="submit" value="Add new product">
     </form>
 </div>
 
 <br>
-<div style="text-align: center"><a href="<c:url value="/"/>">
-    <button type="submit"><h3>Go home</h3></button>
-</a></div>
 <h2 style="text-align: center">Orders</h2>
 <table align="center" bgcolor="aqua">
     <tr>
@@ -78,14 +97,18 @@
     </tr>
     <c:forEach var="orderList" items="${orderList}">
         <tr>
-            <td>${order.titleOrder}</td>
-            <td>${order.priceOrder}</td>
-            <td>${order.idOrder}</td>
-            <td><a href="ready/${order.idOrder}/${order.titleOrder}/${order.priceOrder}">Order is ready</a></td>
+            <td>${orderList.titleOrder}</td>
+            <td>${orderList.priceOrder}</td>
+            <td>${orderList.idOrder}</td>
+            <td><a href="orderIsComplete/${orderList.idOrder}" method="POST">Order is ready</a></td>
         </tr>
     </c:forEach>
 </table>
 <br>
+<div style="text-align: center"><a href="<c:url value="/"/>">
+    <button type="submit"><h3>Go home</h3></button>
+</a></div>
+
 
 </body>
 </html>

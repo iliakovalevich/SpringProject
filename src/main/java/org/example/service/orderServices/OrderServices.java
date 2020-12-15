@@ -11,7 +11,7 @@ public interface OrderServices {
 
     List getAllOrders();
 
-    void addOrderFromMenu(int id);
+    void addOrderFromMenu(int id,String username);
 
     Order getOrderById(int id);
 }
