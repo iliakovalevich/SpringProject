@@ -2,32 +2,54 @@ package org.example.entity;
 
 public class Order {
 
-    private Integer id;
-    private String title;
-    private Double price;
+    private Integer idOrder;
+    private String titleOrder;
+    private Double priceOrder;
 
-    public Integer getId() {
-        return id;
+    public Integer getIdOrder() {
+        return idOrder;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdOrder(Integer idOrder) {
+        this.idOrder = idOrder;
     }
 
-    public String getTitle() {
-        return title;
+    public String getTitleOrder() {
+        return titleOrder;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTitleOrder(String titleOrder) {
+        this.titleOrder = titleOrder;
     }
 
-    public Double getPrice() {
-        return price;
+    public Double getPriceOrder() {
+        return priceOrder;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setPriceOrder(Double priceOrder) {
+        this.priceOrder = priceOrder;
     }
 
+    public Order() {
+    }
+
+    public Order(String titleOrder, Double priceOrder) {
+        this.titleOrder = titleOrder;
+        this.priceOrder = priceOrder;
+    }
+
+    public Order(Integer idOrder, String titleOrder, Double priceOrder) {
+        this.idOrder = idOrder;
+        this.titleOrder = titleOrder;
+        this.priceOrder = priceOrder;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "idOrder=" + getIdOrder() +
+                ", titleOrder='" + getTitleOrder() + '\'' +
+                ", priceOrder=" + getPriceOrder() +
+                '}';
+    }
 }

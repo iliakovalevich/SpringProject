@@ -37,10 +37,10 @@
     </tr>
     <c:forEach var="order" items="${orderList}">
         <tr>
-            <td>${order.title}</td>
-            <td>${order.price}</td>
-            <td>${order.id}</td>
-            <td><a href="/ready/${order.id}/${order.title}/${order.price}">Order is ready</a></td>
+            <td>${order.titleOrder}</td>
+            <td>${order.priceOrder}</td>
+            <td>${order.idOrder}</td>
+             <td><a href="ready/${order.idOrder}/${order.titleOrder}/${order.priceOrder}">Order is ready</a></td>
         </tr>
     </c:forEach>
 </table>
@@ -53,11 +53,11 @@
         <th>Order number</th>
         <th>Order completed</th>
     </tr>
-    <c:forEach var="ready" items="${readyOrder}">
+    <c:forEach var="readyOrder" items="${readyOrder}">
         <tr>
-            <td>${ready.title}</td>
-            <td>${ready.id}</td>
-            <td><a href="/delete/${ready.id}">Order is completed</a></td>
+            <td>${readyOrder.titleOrder}</td>
+            <td>${readyOrder.idOrder}</td>
+            <td><a href="delete/${readyOrder.idOrder}">Order is completed</a></td>
         </tr>
     </c:forEach>
 </table>
